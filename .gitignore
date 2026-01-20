@@ -1,0 +1,33 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# IDEs
+.idea/
+.vscode/
+*.iml
+
+# Build outputs (generic)
+/build/
+/dist/
+/out/
+/bin/
+obj/
+
+# Logs
+*.log
+
+# DB backups (keep sample names if you want tracked)
+*.bak
+
+# Node
+node_modules/
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Java
+*.class
