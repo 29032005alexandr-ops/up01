@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="ru.up01.app.controller.MainController">
+    <top>
+        <ToolBar>
+            <Label text="UP01 — Подсистема заявок (JavaFX + MySQL)" />
+            <Pane HBox.hgrow="ALWAYS"/>
+            <Button text="Обновить всё" onAction="#onRefreshAll"/>
+        </ToolBar>
+    </top>
+
+    <center>
+        <TabPane>
+            <tabs>
+                <Tab text="Адреса" closable="false">
+                    <BorderPane>
+                        <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+                        <center>
+                            <TableView fx:id="addressesTable">
+                                <columns>
+                                    <TableColumn text="ID" fx:id="colAddrId" prefWidth="70"/>
+                                    <TableColumn text="Адрес" fx:id="colAddrLine" prefWidth="520"/>
+                                    <TableColumn text="Город" fx:id="colAddrCity" prefWidth="180"/>
+                                    <TableColumn text="Улица" fx:id="colAddrStreet" prefWidth="220"/>
+                                    <TableColumn text="Дом" fx:id="colAddrHouse" prefWidth="100"/>
+                                </columns>
+                            </TableView>
+                        </center>
+                    </BorderPane>
+                </Tab>
+
+                <Tab text="Сотрудники" closable="false">
+                    <BorderPane>
+                        <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+                        <center>
+                            <TableView fx:id="employeesTable">
+                                <columns>
+                                    <TableColumn text="ID" fx:id="colEmpId" prefWidth="70"/>
+                                    <TableColumn text="ФИО" fx:id="colEmpName" prefWidth="360"/>
+                                    <TableColumn text="Должность" fx:id="colEmpPos" prefWidth="220"/>
+                                    <TableColumn text="Телефон" fx:id="colEmpPhone" prefWidth="180"/>
+                                    <TableColumn text="Email" fx:id="colEmpEmail" prefWidth="260"/>
+                                </columns>
+                            </TableView>
+                        </center>
+                    </BorderPane>
+                </Tab>
+
+                <Tab text="Заявки" closable="false">
+                    <BorderPane>
+                        <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+
+                        <top>
+                            <HBox spacing="8">
+                                <Button text="Добавить" onAction="#onAddRequest"/>
+                                <Button text="Редактировать" onAction="#onEditRequest"/>
+                                <Button text="Удалить" onAction="#onDeleteRequest"/>
+                                <Pane HBox.hgrow="ALWAYS"/>
+                                <Button text="Обновить" onAction="#onRefreshRequests"/>
+                            </HBox>
+                        </top>
+
+                        <center>
+                            <TableView fx:id="requestsTable">
+                                <columns>
+                                    <TableColumn text="ID" fx:id="colReqId" prefWidth="70"/>
+                                    <TableColumn text="Адрес" fx:id="colReqAddress" prefWidth="360"/>
+                                    <TableColumn text="Исполнитель" fx:id="colReqEmployee" prefWidth="260"/>
+                                    <TableColumn text="Статус" fx:id="colReqStatus" prefWidth="180"/>
+                                    <TableColumn text="Заявитель" fx:id="colReqApplicant" prefWidth="220"/>
+                                    <TableColumn text="Телефон" fx:id="colReqPhone" prefWidth="160"/>
+                                    <TableColumn text="Описание" fx:id="colReqProblem" prefWidth="420"/>
+                                    <TableColumn text="Создана" fx:id="colReqCreated" prefWidth="160"/>
+                                    <TableColumn text="Обновлена" fx:id="colReqUpdated" prefWidth="160"/>
+                                </columns>
+                            </TableView>
+                        </center>
+                    </BorderPane>
+                </Tab>
+
+                <Tab text="История" closable="false">
+                    <BorderPane>
+                        <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+
+                        <top>
+                            <HBox spacing="10" alignment="CENTER_LEFT">
+                                <Label text="Фильтры:"/>
+                                <Label text="Адрес:"/>
+                                <ComboBox fx:id="historyAddressFilter" prefWidth="360"/>
+                                <Label text="Сотрудник:"/>
+                                <ComboBox fx:id="historyEmployeeFilter" prefWidth="280"/>
+                                <Button text="Применить" onAction="#onApplyHistoryFilters"/>
+                                <Button text="Сброс" onAction="#onResetHistoryFilters"/>
+                            </HBox>
+                        </top>
+
+                        <center>
+                            <TableView fx:id="historyTable">
+                                <columns>
+                                    <TableColumn text="ID истории" fx:id="colHistId" prefWidth="90"/>
+                                    <TableColumn text="ID заявки" fx:id="colHistReqId" prefWidth="90"/>
+                                    <TableColumn text="Адрес" fx:id="colHistAddress" prefWidth="360"/>
+                                    <TableColumn text="Сотрудник" fx:id="colHistEmployee" prefWidth="260"/>
+                                    <TableColumn text="Статус" fx:id="colHistStatus" prefWidth="220"/>
+                                    <TableColumn text="Дата" fx:id="colHistChanged" prefWidth="180"/>
+                                    <TableColumn text="Комментарий" fx:id="colHistComment" prefWidth="360"/>
+                                </columns>
+                            </TableView>
+                        </center>
+                    </BorderPane>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </center>
+</BorderPane>
